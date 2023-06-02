@@ -85,7 +85,10 @@ def run_camera():
     global frame,img_array, video
     global camscl, camres, camera, cap, runct, gbr
     if runct ==1:
-        cap = cv2.VideoCapture("video/widodo.mp4")
+        # cap = cv2.VideoCapture("video/widodo.mp4")
+        cap = cv2.VideoCapture(1)
+        cap.set(3, 800)
+        cap.set(4, 640)
     elif runct ==0:
         camscl = Image.open("bg.jpg")
         camres = camscl.resize((300, 380), Image.LANCZOS)
@@ -110,7 +113,7 @@ def run_camera():
             cv2.destroyAllWindows()
 
 # Variable GLobal
-model = YOLO("./yolo/last.pt")
+model = YOLO("./yolo/train6/last.pt")
 names = ["Wajah", "KTP Elektronik"]
 runct = 0
 save_wajah=[]
